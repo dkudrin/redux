@@ -19,11 +19,20 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   module: {
+     preLoaders: [
+      {
+        test: /\.js$/,
+        loaders: ['eslint'],
+        include: [
+          path.resolve(__dirname, 'src'),
+        ],
+      }
+    ],
     loaders: [
       {
-        loaders: ['babel-loader'],
+        loaders: ['react-hot', 'babel-loader'],
         include: [
-          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, 'src')
         ],
         test: /\.js$/,
         plugins: ['transform-runtime'],
